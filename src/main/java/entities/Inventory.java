@@ -32,11 +32,11 @@ public class Inventory {
      * @return boolean success status
      */
     public boolean addItem(String item, double unitPrice) {
-        if(unitPrice == 0){
+        if(unitPrice == 0.0){
             System.out.println(String.format("Unit price of item %s cannot be zero, item was not added to inventory",item));
             return false;
         }
-        else if(unitPrice<0){
+        else if(unitPrice<0.0){
             System.out.println(String.format("Unit price of item %s cannot be negative, item was not added to inventory",item));
             return false;
         }
@@ -134,9 +134,12 @@ public class Inventory {
      * @return unit price
      * @throws NullPointerException
      */
-    public double getUnitPriceForItem(String item) throws NullPointerException{
+    public double getUnitPriceForItem(String item) {
         if(inventoryMap.containsKey(item))
             return inventoryMap.get(item);
-        else throw new NullPointerException(String.format("Item %s is not present in the Inventory List",item));
+        else {
+            System.out.println(String.format("Item %s is not present in the Inventory List", item));
+            return -1;
+        }
     }
 }

@@ -5,6 +5,9 @@ import java.util.List;
 /**
  * Interface specifying api for Cart object
  * It has Basic CRUD methods and methods related to Tax and Totals
+ * @author Prashanth B S
+ * @version 1.0
+ * @since   09-11-2018
  */
 public interface ICart {
 
