@@ -1,12 +1,22 @@
 package entities;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
-import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
 
 public class InventoryTests {
+    @Before
+    public void setUp() {
+
+    }
+
+    @After
+    public void tearDown() {
+        Inventory.getInstance().deleteAllItems();
+    }
 
     @Test
     public void addInvalidItemTest(){
@@ -28,7 +38,7 @@ public class InventoryTests {
     }
 
     @Test
-    public void UpdateInvalidUnitPrice(){
+    public void updateInvalidUnitPrice() {
         Inventory inventory = Inventory.getInstance();
         inventory.addItem("Pen",9.99);
 
@@ -40,7 +50,7 @@ public class InventoryTests {
 
 
     @Test
-    public void UpdateValidUnitPrice(){
+    public void updateValidUnitPrice() {
         Inventory inventory = Inventory.getInstance();
         inventory.addItem("Pen",9.99);
 
@@ -51,9 +61,46 @@ public class InventoryTests {
     }
 
     @Test
-    public void InvalidDeleteItem(){
+    public void invalidDeleteItem() {
         Inventory inventory = Inventory.getInstance();
         assertFalse(inventory.deleteItem("Pen"));
+    }
+
+    @Test
+    public void validDeleteItem() {
+        Inventory inventory = Inventory.getInstance();
+        inventory.addItem("Pen", 9.99);
+
+        assertTrue(inventory.deleteItem("Pen"));
+    }
+
+    @Test
+    public void deleteAllTest() {
+        Inventory inventory = Inventory.getInstance();
+        inventory.addItem("Pen", 9.99);
+        inventory.deleteAllItems();
+        assertEquals(0, inventory.getItemsList().size());
+    }
+
+    @Test
+    public void itemPresentTest() {
+        Inventory inventory = Inventory.getInstance();
+        inventory.addItem("Pen", 9.99);
+        assertTrue(inventory.isItemPresent("Pen"));
+        assertFalse(inventory.isItemPresent("Pencil"));
+    }
+
+    @Test
+    public void getUnitPriceTestForValidItem() {
+        Inventory inventory = Inventory.getInstance();
+        inventory.addItem("Pen", 9.99);
+        assertEquals(9.99, inventory.getUnitPriceForItem("Pen"));
+    }
+
+    @Test
+    public void getUnitPriceTestForInvalidItem() {
+        Inventory inventory = Inventory.getInstance();
+        assertEquals(-1.0, inventory.getUnitPriceForItem("Pen"));
     }
 
 
