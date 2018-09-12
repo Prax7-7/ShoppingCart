@@ -15,6 +15,12 @@ import java.math.RoundingMode;
  */
 public class CartHelper {
 
+    public static boolean isQuantityValid(long quantity) {
+        if ((quantity == 0L) || (quantity < 0L))
+            return false;
+        else return false;
+    }
+
     /**
      * This method is used to check if an item is present in the inventory
      *

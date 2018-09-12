@@ -20,66 +20,10 @@ public class CartTests {
         Inventory.getInstance().deleteAllItems();
     }
 
-    /**
-     * Step 1 Test as per the instruction
-     */
-    @Test
-    public void  addProductsToShoppingCart(){
-        ICart cart = new Cart();
-        Inventory inventory = Inventory.getInstance();
-
-        inventory.addItem("Dove Soap",39.99);
-
-        cart.addItem("Dove Soap",5);
-
-        System.out.println("Expected Quantity of Dove Soap item in cart = 5");
-        System.out.println("Actual Quantity of Dove Soap item in cart = "+cart.getItemQuantiy("Dove Soap"));
-        assertEquals(5, cart.getItemQuantiy("Dove Soap"));
-
-        System.out.println("Expected Unit price of Dove Soap = 39.99");
-        System.out.println("Actual Unit price of Dove Soap = "+ inventory.getUnitPriceForItem("Dove Soap"));
-        assertEquals(39.99,inventory.getUnitPriceForItem("Dove Soap"));
-
-
-        System.out.println("Expected Total Amount = "+ cart.getTotalAmount());
-        System.out.println("Actual Total Amount = 199.95");
-        assertEquals(199.95,cart.getTotalAmount());
-
-    }
-
-    /**
-     * Step 2 Test as per the instruction
-     */
-
-    @Test
-    public void addAdditionalProductsOfTheSameTypeToTheShoppingCart() {
-        ICart cart = new Cart();
-        Inventory inventory = Inventory.getInstance();
-
-        inventory.addItem("Dove Soap", 39.99);
-
-        cart.addItem("Dove Soap", 5);
-
-        cart.addItem("Dove Soap", 3);
-
-        System.out.println("Expected Quantity of Dove Soap item in cart = 8");
-        System.out.println("Actual Quantity of Dove Soap item in cart = " + cart.getItemQuantiy("Dove Soap"));
-        assertEquals(8, cart.getItemQuantiy("Dove Soap"));
-
-        System.out.println("Expected Unit price of Dove Soap = 39.99");
-        System.out.println("Actual Unit price of Dove Soap = " + inventory.getUnitPriceForItem("Dove Soap"));
-        assertEquals(39.99, inventory.getUnitPriceForItem("Dove Soap"));
-
-        System.out.println("Expected Total Amount = " + cart.getTotalAmount());
-        System.out.println("Actual Total Amount = 319.92");
-        assertEquals(319.92, cart.getTotalAmount());
-
-    }
 
     /**
      * Step 3 Test as per the instruction
      */
-
     @Test
     public void calculateTheTaxRateOfShoppingCartWithMultipleItems() {
         ICart cart = new Cart(12.50);
@@ -117,6 +61,7 @@ public class CartTests {
         assertEquals(314.96, cart.getTotalAmount());
 
     }
+
 
     //------------------------------------- Remaining unit tests-----------------------------------------------
     @Test
