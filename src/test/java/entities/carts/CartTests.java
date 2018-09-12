@@ -4,11 +4,8 @@ import entities.Inventory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import utility.CartHelper;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertFalse;
-import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.*;
 
 
 public class CartTests {
@@ -47,68 +44,6 @@ public class CartTests {
 
     }
 
-    @Test
-    public void addAdditionalProductsOfTheSameTypeToTheShoppingCart(){
-        ICart cart  = new Cart();
-        Inventory inventory = Inventory.getInstance();
-
-        inventory.addItem("Dove Soap",39.99);
-
-        cart.addItem("Dove Soap",5);
-
-        cart.addItem("Dove Soap",3);
-
-        System.out.println("Expected Quantity of Dove Soap item in cart = 8");
-        System.out.println("Actual Quantity of Dove Soap item in cart = "+cart.getItemQuantiy("Dove Soap"));
-        assertEquals(8, cart.getItemQuantiy("Dove Soap"));
-
-        System.out.println("Expected Unit price of Dove Soap = 39.99");
-        System.out.println("Actual Unit price of Dove Soap = "+ inventory.getUnitPriceForItem("Dove Soap"));
-        assertEquals(39.99,inventory.getUnitPriceForItem("Dove Soap"));
-
-        System.out.println("Expected Total Amount = "+ cart.getTotalAmount());
-        System.out.println("Actual Total Amount = 319.92");
-        assertEquals(319.92,cart.getTotalAmount());
-
-    }
-
-    @Test
-    public void calculateTheTaxRateOfShoppingCartWithMultipleItems(){
-        ICart cart = new Cart(12.50);
-        Inventory inventory = Inventory.getInstance();
-
-        inventory.addItem("Dove Soap",39.99);
-        inventory.addItem("Axe Deo",99.99);
-
-        cart.addItem("Dove Soap",2);
-        cart.addItem("Axe Deo",2);
-
-        System.out.println("Expected Quantity of Dove Soap item in cart = 2");
-        System.out.println("Actual Quantity of Dove Soap item in cart = "+cart.getItemQuantiy("Dove Soap"));
-        assertEquals(2, cart.getItemQuantiy("Dove Soap"));
-
-        System.out.println("Expected Unit price of Dove Soap = 39.99");
-        System.out.println("Actual Unit price of Dove Soap = "+ inventory.getUnitPriceForItem("Dove Soap"));
-        assertEquals(39.99,inventory.getUnitPriceForItem("Dove Soap"));
-
-        System.out.println("Expected Quantity of Axe Item item in cart = 2");
-        System.out.println("Actual Quantity of Dove Soap item in cart = "+cart.getItemQuantiy("Axe Deo"));
-        assertEquals(2, cart.getItemQuantiy("Axe Deo"));
-
-        System.out.println("Expected Unit price of Axe Soap = 99.99");
-        System.out.println("Actual Unit price of Axe Deo = "+ inventory.getUnitPriceForItem("Axe Deo"));
-        assertEquals(99.99,inventory.getUnitPriceForItem("Axe Deo"));
-
-        System.out.println("Expected Tax amount for rate 12.5% = 35.00");
-        System.out.println("Expected Tax amount for rate 12.5% = "+cart.getTaxAmount());
-        assertEquals(35.00,cart.getTaxAmount());
-
-
-        System.out.println("Expected Total Amount = "+ cart.getTotalAmount());
-        System.out.println("Actual Total Amount = 314.96");
-        assertEquals(314.96,cart.getTotalAmount());
-
-    }
 
     @Test
     public void shouldNotAddItemToCart(){
