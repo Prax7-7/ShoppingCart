@@ -1,4 +1,4 @@
-package entities.carts;
+package old.entities.carts;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
 public interface ICart {
 
     /**
-     * This method is used to add a new Item to cart default quantity is one
+     * This method is used to add a new Product to cart default quantity is one
      *
      * @param item String value, item from inventory
      * @return boolean Success status
@@ -21,7 +21,7 @@ public interface ICart {
     boolean addItem(String item);
 
     /**
-     * This method is used to add a new Item to cart with specific quantity
+     * This method is used to add a new Product to cart with specific quantity
      *
      * @param item     String value, item from inventory
      * @param quantity non-negative, non-zero long values

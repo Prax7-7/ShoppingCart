@@ -1,4 +1,4 @@
-package entities;
+package old.entities;
 
 import org.junit.After;
 import org.junit.Before;

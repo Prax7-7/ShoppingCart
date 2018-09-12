@@ -1,6 +1,6 @@
-package entities.carts;
+package old.entities.carts;
 
-import entities.Inventory;
+import old.entities.Inventory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -43,7 +43,7 @@ public class CartTests {
         System.out.println("Actual Unit price of Dove Soap = " + inventory.getUnitPriceForItem("Dove Soap"));
         assertEquals(39.99, inventory.getUnitPriceForItem("Dove Soap"));
 
-        System.out.println("Expected Quantity of Axe Item item in cart = 2");
+        System.out.println("Expected Quantity of Axe Product item in cart = 2");
         System.out.println("Actual Quantity of Dove Soap item in cart = " + cart.getItemQuantiy("Axe Deo"));
         assertEquals(2, cart.getItemQuantiy("Axe Deo"));
 
@@ -69,16 +69,16 @@ public class CartTests {
         ICart cart = new Cart();
         Inventory inventory = Inventory.getInstance();
 
-        //Item not present in inventory, should return false
+        //Product not present in inventory, should return false
         assertFalse(cart.addItem("Dove Soap"));
 
         inventory.addItem("Dove Soap",39.99);
 
-        //Item added to inventory but quantity is zero, should return false
+        //Product added to inventory but quantity is zero, should return false
         assertFalse( cart.addItem("Dove Soap",0));
 
 
-        //Item added to inventory but quantity is negative, should return false
+        //Product added to inventory but quantity is negative, should return false
         assertFalse(cart.addItem("Dove Soap",-1));
 
 
@@ -90,11 +90,11 @@ public class CartTests {
         Inventory inventory = Inventory.getInstance();
         inventory.addItem("Dove Soap",39.99);
 
-        //Item not present in the cart, should return false
+        //Product not present in the cart, should return false
         assertFalse(cart.updateItemQuantity("Dove Soap",2));
 
         cart.addItem("Dove Soap",2);
-        //Item quantity is negative, should return false
+        //Product quantity is negative, should return false
         assertFalse(cart.updateItemQuantity("Dove Soap",-1));
 
 
@@ -150,7 +150,7 @@ public class CartTests {
         cart.addItem("Dove Soap", 2);
         cart.addItem("Pen",3);
 
-        //The unique Item list size should be 2
+        //The unique Product list size should be 2
         assertEquals(2,cart.getCartItems().size());
 
         assertEquals("Dove Soap",cart.getCartItems().get(0));
@@ -158,7 +158,7 @@ public class CartTests {
 
 
         cart.deleteItem("Dove Soap");
-        //The unique Item list size should be 1
+        //The unique Product list size should be 1
         assertEquals(1,cart.getCartItems().size());
         assertEquals("Pen",cart.getCartItems().get(0));
 

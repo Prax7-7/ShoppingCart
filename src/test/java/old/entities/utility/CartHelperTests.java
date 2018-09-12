@@ -1,6 +1,6 @@
-package utility;
+package old.entities.utility;
 
-import entities.Inventory;
+import old.entities.Inventory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

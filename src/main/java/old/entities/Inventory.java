@@ -1,4 +1,4 @@
-package entities;
+package old.entities;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * Inventory class is singleton calls that encapculates inventorylist for shopping as a HashMap
- * InventoryMap has Item Name as key and Unit price as Value
+ * InventoryMap has Product Name as key and Unit price as Value
  * It binds the inventoryItems map with basic CRUD operations
  *
  * @author Prashanth B S
@@ -27,7 +27,6 @@ public class Inventory {
 
     /**
      * This static method returns Inventory instance
-     *
      * @return Inventory instance
      */
     public synchronized static Inventory getInstance() {
@@ -38,16 +37,16 @@ public class Inventory {
     }
 
     /**
-     * This method adds a new Item to the inventory
+     * This method adds a new Product to the inventory
      *
-     * @param item      String type key
+     * @param item  String type key
      * @param unitPrice non-zero, non-negative double value
      * @return boolean success status
      */
     public boolean addItem(String item, double unitPrice) {
         if (isUnitPriceValid(unitPrice)) {
             if (inventoryMap.containsKey(item)) {
-                System.out.println(String.format("Item %s already present in the inventory ", item));
+                System.out.println(String.format("Product %s already present in the inventory ", item));
                 return false;
             } else {
                 inventoryMap.put(item, unitPrice);
@@ -82,7 +81,7 @@ public class Inventory {
 
         if (isUnitPriceValid(newPrice)) {
             if (!inventoryMap.containsKey(item)) {
-                System.out.println(String.format("Item %s not present in the inventory ", item));
+                System.out.println(String.format("Product %s not present in the inventory ", item));
                 return false;
             } else {
                 inventoryMap.put(item, newPrice);
@@ -103,7 +102,7 @@ public class Inventory {
             inventoryMap.remove(item);
             return true;
         } else {
-            System.out.println(String.format("Item %s is not present in the Inventory List", item));
+            System.out.println(String.format("Product %s is not present in the Inventory List", item));
             return false;
         }
     }
@@ -148,7 +147,7 @@ public class Inventory {
         if (inventoryMap.containsKey(item))
             return inventoryMap.get(item);
         else {
-            System.out.println(String.format("Item %s is not present in the Inventory List", item));
+            System.out.println(String.format("Product %s is not present in the Inventory List", item));
             return -1;
         }
     }

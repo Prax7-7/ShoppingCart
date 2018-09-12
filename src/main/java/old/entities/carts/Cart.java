@@ -1,6 +1,7 @@
-package entities.carts;
+package old.entities.carts;
 
-import utility.CartHelper;
+
+import old.entities.utility.CartHelper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,7 +44,7 @@ public class Cart implements ICart {
             cartItemsMap.put(item, 1L);
             return true;
         } else {
-            System.out.println(String.format("Item %s is not from inventory, could not add to cart", item));
+            System.out.println(String.format("Product %s is not from inventory, could not add to cart", item));
             return false;
         }
     }
@@ -62,7 +63,7 @@ public class Cart implements ICart {
             initQuantity = cartItemsMap.get(item);
             updatedQuantity = initQuantity + quantity;
 
-            System.out.println(String.format("Item %s is already present in the cart, hence updated the quantity from %s to" +
+            System.out.println(String.format("Product %s is already present in the cart, hence updated the quantity from %s to" +
                     " %s", item, initQuantity, updatedQuantity));
             cartItemsMap.put(item, updatedQuantity);
             return true;
@@ -83,11 +84,11 @@ public class Cart implements ICart {
             System.out.println(String.format("New Quantity cannot be negative, hence item %s cannot be updated", item));
             return false;
         } else if (cartItemsMap.containsKey(item)) {
-            System.out.println(String.format("Item quantity was updated successfully to %s", newQuantity));
+            System.out.println(String.format("Product quantity was updated successfully to %s", newQuantity));
             cartItemsMap.put(item, newQuantity);
             return true;
         } else {
-            System.out.println(String.format("Item is not present in the cart, hence item %s cannot be updated", item));
+            System.out.println(String.format("Product is not present in the cart, hence item %s cannot be updated", item));
             return false;
         }
     }
@@ -96,10 +97,10 @@ public class Cart implements ICart {
     public boolean deleteItem(String item) {
         if (cartItemsMap.containsKey(item)) {
             cartItemsMap.remove(item);
-            System.out.println(String.format("Successfully deleted Item %s from the cart", item));
+            System.out.println(String.format("Successfully deleted Product %s from the cart", item));
             return true;
         } else {
-            System.out.println(String.format("Item %s is not found in the cart", item));
+            System.out.println(String.format("Product %s is not found in the cart", item));
             return false;
         }
 
