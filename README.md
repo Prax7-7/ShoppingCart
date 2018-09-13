@@ -5,6 +5,7 @@ Simple Shopping cart
 # Dependencies
 
 Java version : `10.0.2`
+
 gradle version : `4.7`
 
 
