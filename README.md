@@ -19,8 +19,3 @@ use command `gradle clean build test`
 /build/reports/tests/test/index.html
 
 
-# The expected step_2  test location
-
-`src/test/java/core/carts/CartTests.calculateTheTaxRateOfShoppingCartWithMultipleItems()`
-
-`Note: I have few extra tests hope you don't mind`
