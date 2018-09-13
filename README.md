@@ -23,4 +23,4 @@ use command `gradle clean build test`
 
 `src/test/java/core/carts/CartTests.calculateTheTaxRateOfShoppingCartWithMultipleItems()`
 
-`Note: I have few extra tests hope you don't mind`
+`Note: I have added few extra tests hope you don't mind`
