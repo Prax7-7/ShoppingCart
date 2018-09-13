@@ -1,4 +1,4 @@
-package refined.entities;
+package entities;
 
 /**
  * This is a pojo class for product instances with some mandatory fields and optional fields
@@ -87,7 +87,7 @@ public class Product {
         /**
          * This method constructs the item instance with specified data
          *
-         * @return
+         * @return Product instance
          * @throws IllegalArgumentException
          */
         public Product build() throws IllegalArgumentException {

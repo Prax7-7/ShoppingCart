@@ -1,11 +1,11 @@
-package refined.core.carts;
+package core.carts;
 
-import refined.entities.Product;
+import entities.Product;
 
 import java.util.List;
 
 /**
- * Interface for Cart instances
+ * Interface for Cart instance, provides basic APIs
  *
  * @author Prashanth B S
  * @version 1.0
@@ -20,7 +20,35 @@ public interface ICart {
      * @param quantity quantity of the product
      * @throws IllegalArgumentException
      */
-    void addItem(Product product, int quantity) throws IllegalArgumentException;
+    void addProduct(Product product, int quantity) throws IllegalArgumentException;
+
+    /**
+     * This method is check if cart is empty
+     *
+     * @return boolean
+     */
+    boolean isCartEmpty();
+
+    /**
+     * This method updated the product quantity to new quantity
+     *
+     * @param product     existing product, cannot be null
+     * @param newQuantity quantity to overwritten to
+     */
+    void updateProductQuantity(Product product, int newQuantity) throws IllegalArgumentException;
+
+    /**
+     * This method is used to delete an existing product
+     *
+     * @param product cannot be null
+     * @throws IllegalArgumentException
+     */
+    void deleteProduct(Product product) throws IllegalArgumentException;
+
+    /**
+     * This method is used to clear the cart
+     */
+    void clear();
 
     /**
      * This methods returns list of unique products in the cart
@@ -50,4 +78,6 @@ public interface ICart {
      * @return
      */
     double getSubTotal();
+
+
 }

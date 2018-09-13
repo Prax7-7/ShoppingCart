@@ -1,6 +1,6 @@
-package refined.utility;
+package util;
 
-import refined.entities.Product;
+import entities.Product;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

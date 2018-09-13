@@ -1,9 +1,9 @@
-package refined.entities;
+package entities;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import testUtility.testData.TestProducts;
+import testUtil.testData.TestProducts;
 
 import static junit.framework.TestCase.*;
 import static org.junit.Assert.fail;

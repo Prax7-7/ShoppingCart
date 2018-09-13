@@ -1,10 +1,17 @@
 # ShoppingCart
 
-Simple Shopping cart project
+Simple Shopping cart
+
+# Dependencies
+
+Java version : `10.0.2`
+gradle version : `4.7`
+
 
 # To Test
 
-use command `gradle clean build`
+use command `gradle clean build test`
+
 
 # Test Report Path
 
@@ -13,6 +20,6 @@ use command `gradle clean build`
 
 # The expected step_1  test location
 
-`src/test/java/entities/carts/CartTests.addProductsToShoppingCart()`
+`src/test/java/core/carts/CartTests.addProductsToShoppingCart()`
 
 `Note: I have few extra tests hope you don't mind`

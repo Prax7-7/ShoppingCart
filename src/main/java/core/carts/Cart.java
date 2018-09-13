@@ -1,14 +1,14 @@
-package refined.core.carts;
+package core.carts;
 
-import old.entities.utility.CartHelper;
-import refined.entities.Product;
+import entities.Product;
+import util.CartHelper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static refined.utility.CartHelper.*;
+import static util.CartHelper.*;
 
 
 /**
@@ -41,15 +41,18 @@ public class Cart implements ICart {
         this.taxRate = taxRate;
     }
 
-
     @Override
-    public void addItem(Product product, int quantity) throws IllegalArgumentException {
-        if (!isQuantityValid(quantity)) {
-            throw new IllegalArgumentException("Invalid quantity value, quantity cannot be zero or negative");
-        } else if (cartProductMap.containsKey(product))
-            incrementProductQuantiy(product, quantity);
-        else
-            cartProductMap.put(product, quantity);
+    public void addProduct(Product product, int quantity) throws IllegalArgumentException {
+        try {
+            validateCartEntry(product, quantity);
+
+            if (cartProductMap.containsKey(product))
+                incrementProductQuantiy(product, quantity);
+            else
+                cartProductMap.put(product, quantity);
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
 
     }
 
@@ -63,6 +66,41 @@ public class Cart implements ICart {
         int initQuantity;
         initQuantity = cartProductMap.get(product);
         cartProductMap.replace(product, initQuantity, initQuantity + incrementalQuantity);
+    }
+
+    private void validateCartEntry(Product product, int quantity) {
+        if (product == null)
+            throw new IllegalArgumentException("Product to be added is null");
+        else if (!isQuantityValid(quantity))
+            throw new IllegalArgumentException("Invalid quantity value, quantity cannot be zero or negative");
+    }
+
+    @Override
+    public void updateProductQuantity(Product product, int newQuantity) throws IllegalArgumentException {
+        try {
+            validateCartEntry(product, newQuantity);
+            if (cartProductMap.containsKey(product))
+                cartProductMap.replace(product, newQuantity);
+            else
+                throw new IllegalArgumentException("Product doesn't exist in cart, update failed");
+        } catch (IllegalArgumentException e) {
+            throw e;
+        }
+
+    }
+
+    @Override
+    public void deleteProduct(Product product) throws IllegalArgumentException {
+        if (product == null || !cartProductMap.containsKey(product)) {
+            throw new IllegalArgumentException("Input Product is null or doesn't exist in cart");
+        } else {
+            cartProductMap.remove(product);
+        }
+    }
+
+    @Override
+    public void clear() {
+        cartProductMap.clear();
     }
 
     @Override
@@ -95,6 +133,11 @@ public class Cart implements ICart {
 
         subTotal = formatAmountValue(subTotal);
         return subTotal;
+    }
+
+    @Override
+    public boolean isCartEmpty() {
+        return cartProductMap.size() == 0;
     }
 
 
