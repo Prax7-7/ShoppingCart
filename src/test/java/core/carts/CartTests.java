@@ -39,6 +39,9 @@ public class CartTests {
 
     }
 
+    /**
+     * Step 2 Test as per the instruction
+     */
     @Test
     public void addAdditionalProductsOfTheSameTypeToTheShoppingCart() {
         ICart cart = new Cart();
@@ -53,6 +56,31 @@ public class CartTests {
         assertEquals(doveSoap.getUnitPrice(), cart.getAllProducts().get(0).getUnitPrice());
 
         assertEquals(319.92, cart.getTotalAmount());
+    }
+
+    /**
+     * Step 3 Test as per the instruction
+     */
+    @Test
+    public void calculateTheTaxRateOfShoppingCartWithMultipleItems() {
+        ICart cart = new Cart();
+
+        Product doveSoap = TestProducts.getDoveSoap();
+        Product axeDeo = TestProducts.getAxeDeo();
+        cart.setTaxRate(12.5);
+
+        cart.addProduct(doveSoap, 2);
+        cart.addProduct(axeDeo, 2);
+
+        assertEquals(2, cart.getProductQuantity(doveSoap));
+        assertEquals(2, cart.getProductQuantity(axeDeo));
+
+        assertEquals(doveSoap.getUnitPrice(), cart.getAllProducts().get(0).getUnitPrice());
+        assertEquals(axeDeo.getUnitPrice(), cart.getAllProducts().get(1).getUnitPrice());
+
+        assertEquals(35.00, cart.getTaxAmount());
+
+        assertEquals(314.96, cart.getTotalAmount());
     }
 
     //------------------------------------- Remaining unit tests-----------------------------------------------

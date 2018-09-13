@@ -21,10 +21,10 @@ import static util.CartHelper.*;
 public class Cart implements ICart {
 
     private final HashMap<Product, Integer> cartProductMap;
-    private final double taxRate;
+    private double taxRate;
 
     /**
-     * Constructor for carts with out tax
+     * Default Constructor
      */
     public Cart() {
         cartProductMap = new HashMap<>();
@@ -36,9 +36,22 @@ public class Cart implements ICart {
      *
      * @param taxRate double, rate of tax
      */
-    public Cart(double taxRate) {
+    public Cart(double taxRate) throws IllegalArgumentException {
         cartProductMap = new HashMap<>();
-        this.taxRate = taxRate;
+        updateTaxRate(taxRate);
+    }
+
+    /**
+     * Validate and update TaxRate
+     *
+     * @param taxRate taxRate cannot be negative
+     * @throws IllegalArgumentException
+     */
+    private void updateTaxRate(double taxRate) throws IllegalArgumentException {
+        if (taxRate < 0.0)
+            throw new IllegalArgumentException("Invalid tax rate, tax rate cannot be negative");
+        else
+            this.taxRate = taxRate;
     }
 
     @Override
@@ -118,7 +131,7 @@ public class Cart implements ICart {
     @Override
     public double getTotalAmount() {
         double total;
-        total = getSubTotal();
+        total = getSubTotal() + getTaxAmount();
         total = CartHelper.formatAmountValue(total);
         return total;
     }
@@ -140,5 +153,21 @@ public class Cart implements ICart {
         return cartProductMap.size() == 0;
     }
 
+    @Override
+    public double getTaxRate() {
+        return taxRate;
+    }
 
+    @Override
+    public void setTaxRate(double taxRate) throws IllegalArgumentException {
+        updateTaxRate(taxRate);
+    }
+
+    @Override
+    public double getTaxAmount() {
+        double taxAmount;
+        taxAmount = getSubTotal() * (this.taxRate / 100);
+        taxAmount = CartHelper.formatAmountValue(taxAmount);
+        return taxAmount;
+    }
 }

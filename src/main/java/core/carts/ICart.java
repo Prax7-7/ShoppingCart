@@ -75,9 +75,29 @@ public interface ICart {
     /**
      * This method returns total amount exclusive of tax
      *
-     * @return
+     * @return double tax rate
      */
     double getSubTotal();
 
+    /**
+     * This method returns tax rate
+     *
+     * @return double tax rate
+     */
+    double getTaxRate();
 
+    /**
+     * This method is used to set tax-rate
+     *
+     * @param taxRate double value cannot be negative
+     * @throws IllegalArgumentException
+     */
+    void setTaxRate(double taxRate) throws IllegalArgumentException;
+
+    /**
+     * This method returns the payable tax-amount
+     *
+     * @return double tax rate
+     */
+    double getTaxAmount();
 }

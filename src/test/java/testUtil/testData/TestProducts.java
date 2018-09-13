@@ -11,5 +11,9 @@ public class TestProducts {
         return new Product.ProductBuilder("Pen", 9.99).build();
     }
 
+    public static Product getAxeDeo() {
+        return new Product.ProductBuilder("Axe Deo", 99.99).build();
+    }
+
 
 }
