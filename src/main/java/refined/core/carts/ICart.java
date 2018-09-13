@@ -32,12 +32,22 @@ public interface ICart {
     /**
      * This methos returns the product quantity in the cart for a given product
      *
-     * @param product
-     * @return
+     * @param product key to searched in cart
+     * @return int quantity
      */
     int getProductQuantity(Product product);
 
+    /**
+     * This method returns the total amount payable for the content of the cart
+     *
+     * @return double, round half-up to decimal places
+     */
     double getTotalAmount();
 
+    /**
+     * This method returns total amount exclusive of tax
+     *
+     * @return
+     */
     double getSubTotal();
 }

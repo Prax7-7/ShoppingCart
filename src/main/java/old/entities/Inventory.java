@@ -27,6 +27,7 @@ public class Inventory {
 
     /**
      * This static method returns Inventory instance
+     *
      * @return Inventory instance
      */
     public synchronized static Inventory getInstance() {
@@ -39,7 +40,7 @@ public class Inventory {
     /**
      * This method adds a new Product to the inventory
      *
-     * @param item  String type key
+     * @param item      String type key
      * @param unitPrice non-zero, non-negative double value
      * @return boolean success status
      */

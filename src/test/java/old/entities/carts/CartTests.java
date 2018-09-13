@@ -11,12 +11,12 @@ import static junit.framework.TestCase.*;
 public class CartTests {
 
     @Before
-    public void setUp(){
+    public void setUp() {
 
     }
 
     @After
-    public void tearDown(){
+    public void tearDown() {
         Inventory.getInstance().deleteAllItems();
     }
 
@@ -65,67 +65,67 @@ public class CartTests {
 
     //------------------------------------- Remaining unit tests-----------------------------------------------
     @Test
-    public void shouldNotAddItemToCart(){
+    public void shouldNotAddItemToCart() {
         ICart cart = new Cart();
         Inventory inventory = Inventory.getInstance();
 
         //Product not present in inventory, should return false
         assertFalse(cart.addItem("Dove Soap"));
 
-        inventory.addItem("Dove Soap",39.99);
+        inventory.addItem("Dove Soap", 39.99);
 
         //Product added to inventory but quantity is zero, should return false
-        assertFalse( cart.addItem("Dove Soap",0));
+        assertFalse(cart.addItem("Dove Soap", 0));
 
 
         //Product added to inventory but quantity is negative, should return false
-        assertFalse(cart.addItem("Dove Soap",-1));
+        assertFalse(cart.addItem("Dove Soap", -1));
 
 
     }
 
     @Test
-    public void shouldNotUpdateItemQuantity(){
+    public void shouldNotUpdateItemQuantity() {
         ICart cart = new Cart();
         Inventory inventory = Inventory.getInstance();
-        inventory.addItem("Dove Soap",39.99);
+        inventory.addItem("Dove Soap", 39.99);
 
         //Product not present in the carts, should return false
-        assertFalse(cart.updateItemQuantity("Dove Soap",2));
+        assertFalse(cart.updateItemQuantity("Dove Soap", 2));
 
-        cart.addItem("Dove Soap",2);
+        cart.addItem("Dove Soap", 2);
         //Product quantity is negative, should return false
-        assertFalse(cart.updateItemQuantity("Dove Soap",-1));
+        assertFalse(cart.updateItemQuantity("Dove Soap", -1));
 
 
     }
 
     @Test
-    public void shouldUpdateCartItemSuccessfully(){
+    public void shouldUpdateCartItemSuccessfully() {
         ICart cart = new Cart();
         Inventory inventory = Inventory.getInstance();
-        inventory.addItem("Pen",9.99);
-        cart.addItem("Pen",2);
+        inventory.addItem("Pen", 9.99);
+        cart.addItem("Pen", 2);
         //update quantity to 5
-        assertTrue(cart.updateItemQuantity("Pen",5));
+        assertTrue(cart.updateItemQuantity("Pen", 5));
         //verify the item quantity
-        assertEquals(5,cart.getItemQuantiy("Pen"));
+        assertEquals(5, cart.getItemQuantiy("Pen"));
     }
 
     @Test
-    public void shouldDeleteItemFromCart(){
+    public void shouldDeleteItemFromCart() {
         ICart cart = new Cart();
         Inventory inventory = Inventory.getInstance();
-        inventory.addItem("Dove Soap",39.99);
-        inventory.addItem("Pen",9.99);
-        cart.addItem("Dove Soap",2);
+        inventory.addItem("Dove Soap", 39.99);
+        inventory.addItem("Pen", 9.99);
+        cart.addItem("Dove Soap", 2);
         //Update to quantiy zero should delete item from carts and return true
-        assertTrue(cart.updateItemQuantity("Dove Soap",0));
+        assertTrue(cart.updateItemQuantity("Dove Soap", 0));
 
         //Confirm if the item is deleted from carts
         assertFalse(cart.isItemPresent("Dove Soap"));
 
-        cart.addItem("Pen",2);
+        cart.addItem("Pen", 2);
         //delete from carts
         assertTrue(cart.deleteItem("Pen"));
 
@@ -134,63 +134,63 @@ public class CartTests {
     }
 
     @Test
-    public void invalidItemDelete(){
+    public void invalidItemDelete() {
         ICart cart = new Cart();
         //trying tp delete item which is not in carts
         assertFalse(cart.deleteItem("Dove Soap"));
     }
 
     @Test
-    public void getCartItemTest(){
+    public void getCartItemTest() {
         ICart cart = new Cart();
         Inventory inventory = Inventory.getInstance();
-        inventory.addItem("Dove Soap",39.99);
-        inventory.addItem("Pen",9.99);
+        inventory.addItem("Dove Soap", 39.99);
+        inventory.addItem("Pen", 9.99);
 
         cart.addItem("Dove Soap", 2);
-        cart.addItem("Pen",3);
+        cart.addItem("Pen", 3);
 
         //The unique Product list size should be 2
-        assertEquals(2,cart.getCartItems().size());
+        assertEquals(2, cart.getCartItems().size());
 
-        assertEquals("Dove Soap",cart.getCartItems().get(0));
-        assertEquals("Pen",cart.getCartItems().get(1));
+        assertEquals("Dove Soap", cart.getCartItems().get(0));
+        assertEquals("Pen", cart.getCartItems().get(1));
 
 
         cart.deleteItem("Dove Soap");
         //The unique Product list size should be 1
-        assertEquals(1,cart.getCartItems().size());
-        assertEquals("Pen",cart.getCartItems().get(0));
+        assertEquals(1, cart.getCartItems().size());
+        assertEquals("Pen", cart.getCartItems().get(0));
 
         cart.deleteItem("Pen");
-        assertEquals(0,cart.getCartItems().size());
+        assertEquals(0, cart.getCartItems().size());
 
 
     }
 
     @Test
-    public void itemQuantityTest(){
+    public void itemQuantityTest() {
         ICart cart = new Cart();
         Inventory inventory = Inventory.getInstance();
-        inventory.addItem("Pen",9.99);
+        inventory.addItem("Pen", 9.99);
 
-        cart.addItem("Pen",3);
+        cart.addItem("Pen", 3);
 
-        assertEquals(3,cart.getItemQuantiy("Pen"));
+        assertEquals(3, cart.getItemQuantiy("Pen"));
 
         cart.deleteItem("Pen");
 
-        assertEquals(0L,cart.getItemQuantiy("Pen"));
+        assertEquals(0L, cart.getItemQuantiy("Pen"));
     }
 
     @Test
-    public void cartEmptyTest(){
+    public void cartEmptyTest() {
         ICart cart = new Cart();
         Inventory inventory = Inventory.getInstance();
-        inventory.addItem("Pen",9.99);
+        inventory.addItem("Pen", 9.99);
 
         assertTrue(cart.isCartEmpty());
-        cart.addItem("Pen",3);
+        cart.addItem("Pen", 3);
 
         assertFalse(cart.isCartEmpty());
 
@@ -200,11 +200,11 @@ public class CartTests {
     }
 
     @Test
-    public void getTaxRateTest(){
+    public void getTaxRateTest() {
         ICart cart = new Cart();
-        assertEquals(0.0,cart.getTaxRate());
+        assertEquals(0.0, cart.getTaxRate());
 
         cart = new Cart(12.5);
-        assertEquals(12.5,cart.getTaxRate());
+        assertEquals(12.5, cart.getTaxRate());
     }
 }

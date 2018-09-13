@@ -5,6 +5,14 @@ import refined.entities.Product;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+
+/**
+ * This is a helper class for cart
+ *
+ * @author Prashanth B S
+ * @version 1.0
+ * @since 13-09-2018
+ */
 public class CartHelper {
 
     /**

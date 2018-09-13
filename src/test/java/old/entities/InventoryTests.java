@@ -9,6 +9,7 @@ import static junit.framework.TestCase.*;
 public class InventoryTests {
 
     Inventory inventory = Inventory.getInstance();
+
     @Before
     public void setUp() {
 
@@ -20,45 +21,45 @@ public class InventoryTests {
     }
 
     @Test
-    public void addInvalidItemTest(){
+    public void addInvalidItemTest() {
 //        Inventory inventory = Inventory.getInstance();
 
-        assertFalse(inventory.addItem("Pen",0.0));
-        assertFalse(inventory.addItem("Pen",-1.43));
+        assertFalse(inventory.addItem("Pen", 0.0));
+        assertFalse(inventory.addItem("Pen", -1.43));
     }
 
     @Test
-    public void addValidItemTest(){
+    public void addValidItemTest() {
 //        Inventory inventory = Inventory.getInstance();
 
-        assertTrue(inventory.addItem("Pen",9.99));
-        assertTrue(inventory.addItem("Pencil",4.99));
+        assertTrue(inventory.addItem("Pen", 9.99));
+        assertTrue(inventory.addItem("Pencil", 4.99));
 
-        assertEquals(2,inventory.getItemsList().size());
+        assertEquals(2, inventory.getItemsList().size());
 
     }
 
     @Test
     public void updateInvalidUnitPrice() {
 //        Inventory inventory = Inventory.getInstance();
-        inventory.addItem("Pen",9.99);
+        inventory.addItem("Pen", 9.99);
 
-        assertFalse(inventory.updateUnitPrice("Pen",-1.5));
-        assertFalse(inventory.updateUnitPrice("Pen",0));
+        assertFalse(inventory.updateUnitPrice("Pen", -1.5));
+        assertFalse(inventory.updateUnitPrice("Pen", 0));
         assertFalse(inventory.updateUnitPrice("Pencil", 4.5));
-        assertEquals(9.99,inventory.getUnitPriceForItem("Pen"));
+        assertEquals(9.99, inventory.getUnitPriceForItem("Pen"));
     }
 
 
     @Test
     public void updateValidUnitPrice() {
 //        Inventory inventory = Inventory.getInstance();
-        inventory.addItem("Pen",9.99);
+        inventory.addItem("Pen", 9.99);
 
-        assertFalse(inventory.updateUnitPrice("Pen",-1.5));
-        assertFalse(inventory.updateUnitPrice("Pen",0));
+        assertFalse(inventory.updateUnitPrice("Pen", -1.5));
+        assertFalse(inventory.updateUnitPrice("Pen", 0));
 
-        assertEquals(9.99,inventory.getUnitPriceForItem("Pen"));
+        assertEquals(9.99, inventory.getUnitPriceForItem("Pen"));
     }
 
     @Test
