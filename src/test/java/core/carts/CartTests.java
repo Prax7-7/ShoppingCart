@@ -39,6 +39,22 @@ public class CartTests {
 
     }
 
+    @Test
+    public void addAdditionalProductsOfTheSameTypeToTheShoppingCart() {
+        ICart cart = new Cart();
+
+        Product doveSoap = TestProducts.getDoveSoap();
+
+        cart.addProduct(doveSoap, 5);
+        cart.addProduct(doveSoap, 3);
+
+        assertEquals(8, cart.getProductQuantity(doveSoap));
+
+        assertEquals(doveSoap.getUnitPrice(), cart.getAllProducts().get(0).getUnitPrice());
+
+        assertEquals(319.92, cart.getTotalAmount());
+    }
+
     //------------------------------------- Remaining unit tests-----------------------------------------------
 
     @Test
