@@ -23,7 +23,7 @@ public class Cart implements ICart {
     private final HashMap<Product, Integer> cartProductMap;
 
     /**
-     * Constructor for carts with out tax
+     * Default constructor
      */
     public Cart() {
         cartProductMap = new HashMap<>();
