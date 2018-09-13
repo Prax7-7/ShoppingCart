@@ -90,7 +90,7 @@ public class CartTests {
         Inventory inventory = Inventory.getInstance();
         inventory.addItem("Dove Soap",39.99);
 
-        //Product not present in the cart, should return false
+        //Product not present in the carts, should return false
         assertFalse(cart.updateItemQuantity("Dove Soap",2));
 
         cart.addItem("Dove Soap",2);
@@ -119,14 +119,14 @@ public class CartTests {
         inventory.addItem("Dove Soap",39.99);
         inventory.addItem("Pen",9.99);
         cart.addItem("Dove Soap",2);
-        //Update to quantiy zero should delete item from cart and return true
+        //Update to quantiy zero should delete item from carts and return true
         assertTrue(cart.updateItemQuantity("Dove Soap",0));
 
-        //Confirm if the item is deleted from cart
+        //Confirm if the item is deleted from carts
         assertFalse(cart.isItemPresent("Dove Soap"));
 
         cart.addItem("Pen",2);
-        //delete from cart
+        //delete from carts
         assertTrue(cart.deleteItem("Pen"));
 
         //Confirm deletion
@@ -136,7 +136,7 @@ public class CartTests {
     @Test
     public void invalidItemDelete(){
         ICart cart = new Cart();
-        //trying tp delete item which is not in cart
+        //trying tp delete item which is not in carts
         assertFalse(cart.deleteItem("Dove Soap"));
     }
 

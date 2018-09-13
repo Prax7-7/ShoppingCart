@@ -1,14 +1,14 @@
 package refined.entities;
 
 /**
- * This is a immutable pojo class for product instances with some mandatory fields and optional fields
+ * This is a pojo class for product instances with some mandatory fields and optional fields
  * This class also has public builder class in it
  *
  * @author Prashanth B S
  * @version 1.0
  * @since 13-09-2018
  */
-public final class Product {
+public class Product {
 
     //Mandatory fields
     private final String name;
@@ -30,14 +30,26 @@ public final class Product {
         return unitPrice;
     }
 
+    /**
+     * This is overridden method which generates hashCode using the name and unit price
+     *
+     * @return int, hashcode
+     */
     @Override
     public int hashCode() {
         int prime = 31;
         int result = 1;
         result = prime * result + ((this.name == null) ? 0 : this.name.hashCode());
-        result = prime * result + (int) this.unitPrice;
+        result = prime * result + (int) (this.unitPrice * 100.00);
         return result;
     }
+
+    /**
+     * Method to compare an object with product object
+     *
+     * @param obj given object should be of type Product
+     * @return boolean
+     */
 
     @Override
     public boolean equals(Object obj) {
@@ -47,9 +59,7 @@ public final class Product {
             return false;
         else {
             Product product = (Product) obj;
-            boolean isEqual;
-            isEqual = product.name.equals(this.name) && (product.unitPrice == this.unitPrice);
-            return isEqual;
+            return (product.name.equals(this.name) && (product.unitPrice == this.unitPrice));
         }
     }
 
@@ -77,9 +87,16 @@ public final class Product {
         /**
          * This method constructs the item instance with specified data
          *
-         * @return Product instance
+         * @return
+         * @throws IllegalArgumentException
          */
-        public Product build() {
+        public Product build() throws IllegalArgumentException {
+            if (name == null) {
+                throw new IllegalArgumentException("Product name cannot be null");
+            } else if (unitPrice == 0.0 || unitPrice < 0.0) {
+                throw new IllegalArgumentException("Invalid unit-price, unit-price should be greater than zero");
+            }
+
             return new Product(this);
         }
     }

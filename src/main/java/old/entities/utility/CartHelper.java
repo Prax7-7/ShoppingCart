@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 /**
- * The purpose of this class is to help cart class by providing info and formatting support
+ * The purpose of this class is to help carts class by providing info and formatting support
  *
  * @author Prashanth B S
  * @version 1.0

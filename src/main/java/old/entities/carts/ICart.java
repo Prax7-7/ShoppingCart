@@ -13,7 +13,7 @@ import java.util.List;
 public interface ICart {
 
     /**
-     * This method is used to add a new Product to cart default quantity is one
+     * This method is used to add a new Product to carts default quantity is one
      *
      * @param item String value, item from inventory
      * @return boolean Success status
@@ -21,7 +21,7 @@ public interface ICart {
     boolean addItem(String item);
 
     /**
-     * This method is used to add a new Product to cart with specific quantity
+     * This method is used to add a new Product to carts with specific quantity
      *
      * @param item     String value, item from inventory
      * @param quantity non-negative, non-zero long values
@@ -30,7 +30,7 @@ public interface ICart {
     boolean addItem(String item, long quantity);
 
     /**
-     * This method is used to update new quantity for already added item in the cart
+     * This method is used to update new quantity for already added item in the carts
      *
      * @param item     String value, item from inventory
      * @param quantity non-negative, non-zero long values
@@ -39,7 +39,7 @@ public interface ICart {
     boolean updateItemQuantity(String item, long quantity);
 
     /**
-     * This method is used to delete an already added item in the cart
+     * This method is used to delete an already added item in the carts
      *
      * @param item String value, item from inventory
      * @return boolean Success status
@@ -47,23 +47,23 @@ public interface ICart {
     boolean deleteItem(String item);
 
     /**
-     * This method is used to get a list of Unique Items in the cart
+     * This method is used to get a list of Unique Items in the carts
      *
      * @return List of Strings
      */
     List<String> getCartItems();
 
     /**
-     * This method is used to get quantity of an already existing item in the cart
+     * This method is used to get quantity of an already existing item in the carts
      *
      * @param item String value, item from inventory
-     * @return long values, quantiy of item in cart
+     * @return long values, quantiy of item in carts
      * @throws NullPointerException
      */
     long getItemQuantiy(String item);
 
     /**
-     * This method is used to check if cart is empty
+     * This method is used to check if carts is empty
      *
      * @return boolean
      */
@@ -77,28 +77,28 @@ public interface ICart {
     double getTaxRate();
 
     /**
-     * This method is used to return total amount of tax for the content in cart
+     * This method is used to return total amount of tax for the content in carts
      *
      * @return double value, tax amount
      */
     double getTaxAmount();
 
     /**
-     * This method is used to get the subtotal for the cart content, which excludes tax
+     * This method is used to get the subtotal for the carts content, which excludes tax
      *
      * @return double value, subTotal amount
      */
     double getSubTotal();
 
     /**
-     * This method is used to get total amount inclusive of tax for the cart content
+     * This method is used to get total amount inclusive of tax for the carts content
      *
      * @return double value, total amount
      */
     double getTotalAmount();
 
     /**
-     * This method is used to check if item is already present in the cart
+     * This method is used to check if item is already present in the carts
      *
      * @param item String value, item to be searched
      * @return boolean
