@@ -19,8 +19,8 @@ use command `gradle clean build test`
 /build/reports/tests/test/index.html
 
 
-# The expected step_1  test location
+# The expected step_2  test location
 
-`src/test/java/core/carts/CartTests.addProductsToShoppingCart()`
+`src/test/java/core/carts/CartTests.addAdditionalProductsOfTheSameTypeToTheShoppingCart()`
 
 `Note: I have few extra tests hope you don't mind`
