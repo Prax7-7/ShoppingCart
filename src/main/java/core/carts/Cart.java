@@ -21,25 +21,14 @@ import static util.CartHelper.*;
 public class Cart implements ICart {
 
     private final HashMap<Product, Integer> cartProductMap;
-    private final double taxRate;
 
     /**
      * Constructor for carts with out tax
      */
     public Cart() {
         cartProductMap = new HashMap<>();
-        taxRate = 0;
     }
 
-    /**
-     * Parameterised constructor for specifying the tax rate
-     *
-     * @param taxRate double, rate of tax
-     */
-    public Cart(double taxRate) {
-        cartProductMap = new HashMap<>();
-        this.taxRate = taxRate;
-    }
 
     @Override
     public void addProduct(Product product, int quantity) throws IllegalArgumentException {
